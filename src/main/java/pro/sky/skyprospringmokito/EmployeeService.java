@@ -22,7 +22,7 @@ public class EmployeeService {
         checkKye(familName, name); //првоерка на то, что имя и фамилия состоят только из букв
 
         String key = keyGeneration(familName, name);
-        if (employeeMap.containsKey(keyGeneration(familName, name))) {
+        if (employeeMap.containsKey(key)) {
             throw new EmployeeAlreadyAddedException("Сотрудник уже работает в компании");
         } else if (employeeMap.size() > maxEmplyee) {
             throw new EmployeeStorageIsFullException("Мест для новых сотрудников нет");
@@ -37,8 +37,8 @@ public class EmployeeService {
         checkKye(familName, name); //првоерка на то, что имя и фамилия состоят только из букв
         String key = keyGeneration(familName, name);
         if (employeeMap.containsKey(key)) {
-            employeeMap.remove(key);
-            return employeeMap.get(key);
+            return employeeMap.remove(key);
+//            return employeeMap.get(key);
         }
         throw new EmployeeNotFoundException("Сотрудник отсутствует в базе данных, увольнение невозможно");
     }
@@ -51,13 +51,11 @@ public class EmployeeService {
         }
         throw new EmployeeNotFoundException("Сотрудник отсутствует в базе данных");
     }
-
-
-    public String keyGeneration(String familName, String name) {
+    private String keyGeneration(String familName, String name) {
         return familName + name;
     }
 
-    public void checkKye(String familName, String name) {
+    private void checkKye(String familName, String name) {
         if (!(StringUtils.isAlpha(familName) && StringUtils.isAlpha(name))) { //Являются только буквами
             throw new EmployeeuserNotEnterFirstOrLastNameInformationException();
         }

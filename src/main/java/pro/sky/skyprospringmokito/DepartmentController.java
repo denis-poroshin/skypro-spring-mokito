@@ -17,20 +17,19 @@ public class DepartmentController {
         this.companyService = companyService;
     }
 
-    @RequestMapping(path = "/{id}/salary/min")
-    @GetMapping("{id}")
+    @GetMapping(path = "/{id}/salary/min")
     public Employee employeeWithMinimumSalary(@PathVariable int id) {
         return companyService.employeeWithMinimumSalary(id);
     }
-    @RequestMapping(path = "/{id}/salary/max")
+    @GetMapping(path = "/{id}/salary/max")
     public Employee employeeWithMaximumSalary(@PathVariable("id") int departmentId) {
         return companyService.employeeWithMaximumSalary(departmentId);
     }
-    @RequestMapping(path = "/{id}/employees")
+    @GetMapping(path = "/{id}/employees")
     public List<Employee> printAllEmployee(@PathVariable("id") int departmentId) {
         return companyService.printAllEmployee(departmentId);
     }
-    @RequestMapping(path = "/employees")
+    @GetMapping(path = "/employees")
     public Map<Integer, List<Employee>> printAllEmployeeByDepartment() {
         return companyService.printAllEmployeeByDepartment();
 

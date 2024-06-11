@@ -16,7 +16,7 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @RequestMapping(path = "/add")
+    @GetMapping(path = "/add")
     public Employee addEmployee(@RequestParam("lastName") String lastName,
                                 @RequestParam("firstName") String firstName,
                                 @RequestParam("salary") int salary,
@@ -24,13 +24,13 @@ public class EmployeeController {
         return employeeService.addEmployee(lastName, firstName, salary, department);
     }
 
-    @RequestMapping(path = "/remove")
+    @GetMapping(path = "/remove")
     public Employee removeEmployee(@RequestParam("lastName") String lastName,
                                    @RequestParam("firstName") String firstName) {
         return employeeService.dismissalEmployee(lastName, firstName);
     }
 
-    @RequestMapping(path = "/find")
+    @GetMapping(path = "/find")
     public Employee findEmployee(@RequestParam("lastName") String lastName,
                                  @RequestParam("firstName") String firstName) {
         return employeeService.searchEmployee(lastName, firstName);
